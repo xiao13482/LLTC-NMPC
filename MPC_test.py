@@ -18,13 +18,14 @@ from MPC.NMPC_solver import MPC_solver
 import config
 
 
+
 def main():
     # --- 1. Initialization ---
     cfg = config.Config()
     dynamic = Sim_Dynamic()
     solver = MPC_solver(print_time=True, neural_cost = True)# Enable Neural Terminal Cost
 
-    current_state = np.array([0.98, 1.10, -2.26])# Initial parking position
+    current_state = np.array([0.41, 1.25, -1.61])# Initial parking position
     ref_state = np.array([0, 0, 0])                # Target parking position
 
     # Data logging arrays for plotting
@@ -34,7 +35,7 @@ def main():
 
     fig = plt.figure(figsize=(15, 8))
     gs = fig.add_gridspec(3, 2)
-    ax_map = fig.add_subplot(gs[:, 0])  #
+    ax_map = fig.add_subplot(gs[:, 0])  
     ax_pos = fig.add_subplot(gs[0, 1])
     ax_phi = fig.add_subplot(gs[1, 1])
     ax_ctrl = fig.add_subplot(gs[2, 1])
@@ -99,8 +100,8 @@ def main():
         line_x.set_data(time_steps, history_x[:-1])
         line_y.set_data(time_steps, history_y[:-1])
         line_phi.set_data(time_steps, history_phi[:-1])
-        line_v.set_data(time_steps, history_v)
-        line_delta.set_data(time_steps, history_delta)
+
+          
 
         for ax in [ax_pos, ax_phi, ax_ctrl]:
             ax.set_xlim(0, max(20, frame + 5))

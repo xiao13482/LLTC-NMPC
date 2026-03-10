@@ -58,7 +58,7 @@ class MPC_solver:
         ).to(self.device)
 
         model_dir = os.path.join(project_root, 'models')
-        model_path = os.path.join(model_dir, 'lyapunov_terminal_cost_best.pth')
+        model_path = os.path.join(model_dir, 'lyapunov_terminal_cost.pth')
         checkpoint = torch.load(model_path, map_location=self.device)
         self.model.load_state_dict(checkpoint['model_state_dict'])
 
